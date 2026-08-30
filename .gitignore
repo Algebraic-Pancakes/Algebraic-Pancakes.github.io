@@ -4,4 +4,5 @@
 /_freeze/
 /.luarc.json
 _imagify/
-
+notes/*
+!notes/*.qmd
