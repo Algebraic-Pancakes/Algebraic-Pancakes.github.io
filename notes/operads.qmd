@@ -1,0 +1,4 @@
+---
+title: Operads
+subtitle: One-Objects Multicategories
+---
