@@ -3,9 +3,9 @@
     "listing": "/notes/index.html",
     "items": [
       "/notes/abelian-categories.html",
-      "/notes/algebraic-theories.html",
       "/notes/notes.html",
       "/notes/operads.html",
+      "/notes/universal-algebra.html",
       "/notes/sandbox.html"
     ]
   }
