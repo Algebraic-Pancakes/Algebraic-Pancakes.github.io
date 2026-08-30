@@ -1,4 +1,0 @@
----
-title: Algebraic Theories
-subtitle: products go brr
----

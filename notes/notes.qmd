@@ -1,6 +1,12 @@
 ---
-title: Notes Index
-subtitle: Ree
+title: Notes
+filters:
+  - imagify
+imagify:
+  header-includes: \usepackage{quiver}
 ---
 
-ree
+
+
+
+

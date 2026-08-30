@@ -1,0 +1,22 @@
+---
+title: Universal algebra
+subtitle: A group group is an abelian group.
+---
+
+::: {.hidden}
+
+\newcommand{\id}{\text{id}}
+\newcommand{\op}{\mathrm{op}}
+:::
+
+
+# Algebraic theories and their models
+
+::: {#def-algebraic-theory}
+
+Let $\mathbf{Set}_\omega$ denote the full subcategory of $\mathbf{Set}$ consisting of only the finite ordinals.
+A *Lawvere theory* is a category $\mathcal T$ equipped with a functor $J \colon \mathbf{Set}_\omega^\op \to \mathcal T$ which is
+bijective on objects and preserves finite products.
+
+
+
