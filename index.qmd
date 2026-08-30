@@ -1,0 +1,12 @@
+---
+title: "Algebraic Pancakes"
+subtitle: "Because we love stacks"
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/Algebraic-Pancakes
+---
+
+Notes for some reading groups on categorical algebra, higher algebra, and higher category theory.

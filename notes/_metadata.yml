@@ -1,0 +1,15 @@
+title: "Foo"
+date-modified: last-modified
+reference-location: margin
+citation-location: margin
+citation: false
+google-scholar: false
+filters:
+  - imagify
+imagify:
+  header-includes: |
+    \usepackage{newpxtext}
+    \usepackage{newpxmath}
+    \usepackage{amssymb}
+    \usepackage{quiver}
+    \usepackage{mathbbol}

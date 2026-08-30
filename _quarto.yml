@@ -1,0 +1,40 @@
+project:
+  type: website
+
+execute:
+  freeze: auto
+
+website:
+  title: "Algebraic Pancakes"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Notes"
+        href: notes/notes.qmd
+
+format:
+  html:
+    theme:
+      light: pulse
+      dark: vapor
+    css: styles.css
+    toc: true
+    anchor-sections: true
+    smooth-scroll: true
+    page-layout: full
+    grid:
+      sidebar-width: 250px
+      body-width: 800px
+      margin-width: 350px
+
+
+# math
+include-in-header:
+      text: |
+        <script>MathJax = { output: { font: 'mathjax-pagella' } };</script>
+html-math-method:
+  method: mathjax
+  url: https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js
