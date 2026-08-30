@@ -1,22 +1,77 @@
 ---
 title: Universal algebra
 subtitle: A group group is an abelian group.
+header-includes:
+  - \usepackage{tikz-cd}
+  - \usepackage{mathtools}
 ---
 
 ::: {.hidden}
 
 \newcommand{\id}{\text{id}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\Mod}{\mathbf{Mod}}
+\newcommand{\C}{\mathcal{C}}
 :::
 
 
-# Algebraic theories and their models
+# Lawvere theories and their models
 
-::: {#def-algebraic-theory}
 
-Let $\mathbf{Set}_\omega$ denote the full subcategory of $\mathbf{Set}$ consisting of only the finite ordinals.
-A *Lawvere theory* is a category $\mathcal T$ equipped with a functor $J \colon \mathbf{Set}_\omega^\op \to \mathcal T$ which is
-bijective on objects and preserves finite products.
+**Definition.**
+A *Lawvere theory* is a small category $\mathcal T$ with finite coproducts 
+and a specified object $T \in \mathcal T$, such that the objects of $\mathcal T$ precisely form the set $\{0,\, T,\, T + T,\, T + T + T,\, \dots, \sum_{i < n} T, \dots\}$.
+For a category $\C$ with finite products, a *$\C$-model* of a Lawvere theory $\mathcal T$ is a functor $M \colon \mathcal T^\op \to \C$ which preserves finite products.
+We denote by $\Mod_{\mathcal T}(\C)$ the full subcategory of the functor category $[\mathcal T, \C]$ consisting of all the $\C$-models of $\mathcal T$. 
+We may drop the mention of $\C$ when it is clear from context; we will often take $\C = \mathbf{Set}$.
+
+
+**Example.**
+For each natural number $n \in \mathbb N$, let $[n] \in \mathbf{Set}$ denote the a set of cardinality $n$.
+Consider the free--forgetful adjunction $\mathbf{Set} \substack{\xrightarrow{F} \\ \perp \\ \xleftarrow[U]{}} \mathbf{Grp}$, 
+and let $\mathcal T_{\mathrm{Grp}}$ denote the full subcategory of $\mathbf{Grp}$ consisting of each $F[n]$ for all $n \in \mathbb N$. 
+Then we have an equivalence of categories $\Mod_{\mathcal T_{\mathrm{Grp}}}(\mathbf{Set}) \simeq \mathbf{Grp}$.
+<details>
+<summary>Details.</summary>
+First, we observe that $\mathcal T_{\mathrm{Grp}}$ is indeed a Lawvere theory.
+For each $n \in \mathbb N$, we have $[n] \cong \sum_{i < n} [1]$ in $\mathbf{Set}$. So $F[n] \cong \sum_{i < n} F[1]$ in $\mathbf{Grp}$, since $F$ preserves coproducts. Thus we get $F[n] = \sum_{i < n} F[1]$ in $\mathcal T_{\mathrm{Grp}}$.
+
+Next, given a $\mathbf{Set}$-model $M \colon \mathcal T_\mathrm{Grp}^\op \to \mathbf{Set}$, let $HM$ be the group with: \
+1. underlying set $MF[1]$; \
+2. group multiplication $M\alpha \colon (MF[1]) \times (MF[1]) \to MF[1]$, 
+where $\alpha \colon F[1] \to F[1] + F[1] = F[2]$ is the map in $\mathcal T_\mathrm{Grp}$ sending the generator of $F[1]$ to the multiplication of the two generators in $F[2]$; \
+3. identity element $(Me)(*) \in MF[1]$, where $*$ is the unique element in $(MF[1])^0$, and $e \colon F[1] \to F[0]$ is the unique map in $\mathcal T_\mathrm{Grp}$ from $F[1]$ to $F[0]$. \
+<details>
+<summary>Check that $HM$ is a group.</summary>
+</details>
+We extend $H$ to a functor $H \colon \Mod_{\mathcal T_{\mathrm{Grp}}}(\mathbf{Set}) \to \mathbf{Grp}$ as follows:
+given another $M' \in \Mod_{\mathcal T_\mathrm{Grp}}(\mathbf{Set})$ and a morphism $\mu \colon M \to M'$ in $\Mod_{\mathcal T_\mathrm{Grp}}(\mathbf{Set})$, let $H\mu$ be the function $\mu_{F[1]} \colon MF[1] \to M'F[1]$.
+<details>
+<summary>Check that $H\mu$ is a group homomorphism.</summary>
+The commutativity of the diagram
+::: {.imagify}
+[]: %
+\begin{tikzcd}
+	{MF[1] \times MF[1]} && {MF[2]} && {MF[1]} \\
+	\\
+	{M'F[1] \times M'F[1]} && {M'F[2]} && {M'F[1]}
+	\arrow["\cong", from=1-1, to=1-3]
+	\arrow["{\mu_{F[1]} \times \mu_{F[1]}}"', from=1-1, to=3-1]
+	\arrow["{M\alpha}", from=1-3, to=1-5]
+	\arrow["{\mu_{F[2]}}"', from=1-3, to=3-3]
+	\arrow["{\mu_{F[1]}}", from=1-5, to=3-5]
+	\arrow["\cong"', from=3-1, to=3-3]
+	\arrow["{M'\alpha}"', from=3-3, to=3-5]
+\end{tikzcd}
+:::
+in $\mathbf{Set}$ tells us that $\mu_{F[1]}$ is a group homomorphism from $HM$ to $HM'$.
+</details>
+
+[Other direction]
+</details>
+
+
+
 
 
 
