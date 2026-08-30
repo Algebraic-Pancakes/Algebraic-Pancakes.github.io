@@ -79,41 +79,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>MathJax = { output: { font: 'mathjax-pagella' } };</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
-</head>
-
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+</head><body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -275,7 +241,43 @@ window.Quarto = {
     } else {
       toggleColorMode(false);
     }
-  </script>
+  </script>\usepackage{tikz-cd}
+\usepackage{mathtools}
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+
+
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -317,7 +319,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#algebraic-theories-and-their-models" id="toc-algebraic-theories-and-their-models" class="nav-link active" data-scroll-target="#algebraic-theories-and-their-models">Algebraic theories and their models</a></li>
+  <li><a href="#lawvere-theories-and-their-models" id="toc-lawvere-theories-and-their-models" class="nav-link active" data-scroll-target="#lawvere-theories-and-their-models">Lawvere theories and their models</a></li>
   </ul>
 </nav>
     </div>
@@ -354,13 +356,37 @@ window.Quarto = {
 <div class="hidden">
 
 </div>
-<section id="algebraic-theories-and-their-models" class="level1">
-<h1>Algebraic theories and their models</h1>
-<div id="def-algebraic-theory" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> Let <span class="math inline">\(\mathbf{Set}_\omega\)</span> denote the full subcategory of <span class="math inline">\(\mathbf{Set}\)</span> consisting of only the finite ordinals. A <em>Lawvere theory</em> is a category <span class="math inline">\(\mathcal T\)</span> equipped with a functor <span class="math inline">\(J \colon \mathbf{Set}_\omega^\mathrm{op}\to \mathcal T\)</span> which is bijective on objects and preserves finite products.</p>
+<section id="lawvere-theories-and-their-models" class="level1">
+<h1>Lawvere theories and their models</h1>
+<p><strong>Definition.</strong> A <em>Lawvere theory</em> is a small category <span class="math inline">\(\mathcal T\)</span> with finite coproducts and a specified object <span class="math inline">\(T \in \mathcal T\)</span>, such that the objects of <span class="math inline">\(\mathcal T\)</span> precisely form the set <span class="math inline">\(\{0,\, T,\, T + T,\, T + T + T,\, \dots, \sum_{i &lt; n} T, \dots\}\)</span>. For a category <span class="math inline">\(\mathcal{C}\)</span> with finite products, a <em><span class="math inline">\(\mathcal{C}\)</span>-model</em> of a Lawvere theory <span class="math inline">\(\mathcal T\)</span> is a functor <span class="math inline">\(M \colon \mathcal T^\mathrm{op}\to \mathcal{C}\)</span> which preserves finite products. We denote by <span class="math inline">\(\mathbf{Mod}_{\mathcal T}(\mathcal{C})\)</span> the full subcategory of the functor category <span class="math inline">\([\mathcal T, \mathcal{C}]\)</span> consisting of all the <span class="math inline">\(\mathcal{C}\)</span>-models of <span class="math inline">\(\mathcal T\)</span>. We may drop the mention of <span class="math inline">\(\mathcal{C}\)</span> when it is clear from context; we will often take <span class="math inline">\(\mathcal{C}= \mathbf{Set}\)</span>.</p>
+<strong>Example.</strong> For each natural number <span class="math inline">\(n \in \mathbb N\)</span>, let <span class="math inline">\([n] \in \mathbf{Set}\)</span> denote the a set of cardinality <span class="math inline">\(n\)</span>. Consider the free–forgetful adjunction <span class="math inline">\(\mathbf{Set} \substack{\xrightarrow{F} \\ \perp \\ \xleftarrow[U]{}} \mathbf{Grp}\)</span>, and let <span class="math inline">\(\mathcal T_{\mathrm{Grp}}\)</span> denote the full subcategory of <span class="math inline">\(\mathbf{Grp}\)</span> consisting of each <span class="math inline">\(F[n]\)</span> for all <span class="math inline">\(n \in \mathbb N\)</span>. Then we have an equivalence of categories <span class="math inline">\(\mathbf{Mod}_{\mathcal T_{\mathrm{Grp}}}(\mathbf{Set}) \simeq \mathbf{Grp}\)</span>.
+<details>
+<summary>
+Details.
+</summary>
+<p>First, we observe that <span class="math inline">\(\mathcal T_{\mathrm{Grp}}\)</span> is indeed a Lawvere theory. For each <span class="math inline">\(n \in \mathbb N\)</span>, we have <span class="math inline">\([n] \cong \sum_{i &lt; n} [1]\)</span> in <span class="math inline">\(\mathbf{Set}\)</span>. So <span class="math inline">\(F[n] \cong \sum_{i &lt; n} F[1]\)</span> in <span class="math inline">\(\mathbf{Grp}\)</span>, since <span class="math inline">\(F\)</span> preserves coproducts. Thus we get <span class="math inline">\(F[n] = \sum_{i &lt; n} F[1]\)</span> in <span class="math inline">\(\mathcal T_{\mathrm{Grp}}\)</span>.</p>
+Next, given a <span class="math inline">\(\mathbf{Set}\)</span>-model <span class="math inline">\(M \colon \mathcal T_\mathrm{Grp}^\mathrm{op}\to \mathbf{Set}\)</span>, let <span class="math inline">\(HM\)</span> be the group with:<br>
+1. underlying set <span class="math inline">\(MF[1]\)</span>;<br>
+2. group multiplication <span class="math inline">\(M\alpha \colon (MF[1]) \times (MF[1]) \to MF[1]\)</span>, where <span class="math inline">\(\alpha \colon F[1] \to F[1] + F[1] = F[2]\)</span> is the map in <span class="math inline">\(\mathcal T_\mathrm{Grp}\)</span> sending the generator of <span class="math inline">\(F[1]\)</span> to the multiplication of the two generators in <span class="math inline">\(F[2]\)</span>;<br>
+3. identity element <span class="math inline">\((Me)(*) \in MF[1]\)</span>, where <span class="math inline">\(*\)</span> is the unique element in <span class="math inline">\((MF[1])^0\)</span>, and <span class="math inline">\(e \colon F[1] \to F[0]\)</span> is the unique map in <span class="math inline">\(\mathcal T_\mathrm{Grp}\)</span> from <span class="math inline">\(F[1]\)</span> to <span class="math inline">\(F[0]\)</span>.<br>
+
+<details>
+<summary>
+Check that <span class="math inline">\(HM\)</span> is a group.
+</summary>
+</details>
+We extend <span class="math inline">\(H\)</span> to a functor <span class="math inline">\(H \colon \mathbf{Mod}_{\mathcal T_{\mathrm{Grp}}}(\mathbf{Set}) \to \mathbf{Grp}\)</span> as follows: given another <span class="math inline">\(M' \in \mathbf{Mod}_{\mathcal T_\mathrm{Grp}}(\mathbf{Set})\)</span> and a morphism <span class="math inline">\(\mu \colon M \to M'\)</span> in <span class="math inline">\(\mathbf{Mod}_{\mathcal T_\mathrm{Grp}}(\mathbf{Set})\)</span>, let <span class="math inline">\(H\mu\)</span> be the function <span class="math inline">\(\mu_{F[1]} \colon MF[1] \to M'F[1]\)</span>.
+<details>
+<summary>
+Check that <span class="math inline">\(H\mu\)</span> is a group homomorphism.
+</summary>
+The commutativity of the diagram ::: {.imagify} []: %
+::: in <span class="math inline">\(\mathbf{Set}\)</span> tells us that <span class="math inline">\(\mu_{F[1]}\)</span> is a group homomorphism from <span class="math inline">\(HM\)</span> to <span class="math inline">\(HM'\)</span>.
+</details>
+[Other direction]
+</details>
 
 
-</div>
 </section>
 
 </main> <!-- /main -->
