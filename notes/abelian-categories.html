@@ -80,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 <script>MathJax = { output: { font: 'mathjax-pagella' } };</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -293,7 +322,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Abelian Categories</h1>
-<p class="subtitle lead">Categories with vanishing derived subcategory</p>
+<p class="subtitle lead">Kyle Style</p>
 </div>
 
 
@@ -305,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 31, 2026</p>
+      <p class="date-modified">September 4, 2026</p>
     </div>
   </div>
     
@@ -316,6 +345,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="hidden">
+
+</div>
+<p><strong>Lemma (Four Lemma 1).</strong> For abelian groups <span class="math inline">\(A,B,C,D,A',B',C',D'\)</span> and a commmutative diagram <span class="math display">\[
+\begin{tikzcd}
+A \arrow[d, "\alpha", two heads] \arrow[r, "a"] &amp; B \arrow[d, "\beta", hook] \arrow[r, "b"] &amp; C \arrow[d, "\gamma"] \arrow[r, "c"] &amp; D \arrow[d, "\delta", hook] \\
+A' \arrow[r, "a'"]                              &amp; B' \arrow[r, "b'"]                        &amp; C' \arrow[r, "c'"]                   &amp; D'                         
+\end{tikzcd}
+\]</span> Where <span class="math inline">\(\beta, \delta\)</span> are injective, <span class="math inline">\(\alpha\)</span> surjective and the rows are exact, meaning <span class="math inline">\(f(x)=0 \iff \exists y, x=g(y)\)</span> for any composable pair <span class="math inline">\(f,g\)</span> in the row, then <span class="math inline">\(\gamma\)</span> is injective.</p>
+<details>
+<summary>
+<strong>Proof.</strong>
+</summary>
+Suppose <span class="math inline">\(\gamma(x)=0\)</span> then <span class="math inline">\(0=c'(\gamma(x))=\delta ( c(x))\)</span> hense <span class="math inline">\(c(x)=0\)</span> so by exactness there is some <span class="math inline">\(y\)</span> so that <span class="math inline">\(x=b(y)\)</span>. This means <span class="math inline">\(0=\gamma ( b(y)) = b' (\beta(y))\)</span> so by exactness there is some <span class="math inline">\(z\)</span> so that <span class="math inline">\(a'(z)=\beta(y)\)</span>. As <span class="math inline">\(\alpha\)</span> is surjective there is some <span class="math inline">\(w\)</span> so that <span class="math inline">\(\alpha(w)=z\)</span>, here we have <span class="math inline">\(\beta (a(w))=a'(\alpha(w))=a'(z)=\beta(y)\)</span> hense <span class="math inline">\(a(w)=y\)</span> so by exactness <span class="math inline">\(0=b( a (w)) = b(y) = x\)</span> hense <span class="math inline">\(\gamma(x)=0 \implies x=0\)</span> so <span class="math inline">\(\gamma\)</span> is injective
+</details>
+<p>Now as it stands this is a pretty specific proof to abelian groups, well it also generalises to modules over a ring, or more generally some type of sets with structure such that <span class="math inline">\(\ker f = 0\)</span> means <span class="math inline">\(f\)</span> injective but if we try hard we can find different theorems of the same flavour for whom this proof doesn’t seem to work but yet still hold true</p>
+<p><strong>Lemma (Four Lemma 2).</strong> For abelian groups <span class="math inline">\(A,B,C,D,A',B',C',D'\)</span> and a commmutative diagram <span class="math display">\[
+\begin{tikzcd}
+A                             &amp; B \arrow[l, "a"']                                  &amp; C \arrow[l, "b"']                        &amp; D \arrow[l, "c"']                                   \\
+A' \arrow[u, "\alpha"', hook] &amp; B' \arrow[u, "\beta"', two heads] \arrow[l, "a'"'] &amp; C' \arrow[u, "\gamma"'] \arrow[l, "b'"'] &amp; D' \arrow[u, "\delta"', two heads] \arrow[l, "c'"']
+\end{tikzcd}
+\]</span> Where <span class="math inline">\(\beta, \delta\)</span> are surjective, <span class="math inline">\(\alpha\)</span> injective and the rows are exact, meaning <span class="math inline">\(f(x)=0 \iff \exists y, x=g(y)\)</span> for any composable pair <span class="math inline">\(f,g\)</span> in the row, then <span class="math inline">\(\gamma\)</span> is surjective.</p>
+<details>
+<summary>
+<strong>Proof.</strong>
+</summary>
+Ok so I’m lying a little bit here you can prove this one the same way once you use Pontryagin duality to show <span class="math inline">\(\mathbf{Ab}^{op} \cong \mathbf{CTop}_{Ab}\)</span> and then the original proof works there
+</details>
+<p><strong>Lemma (Four Lemma 1).</strong> Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space, a sheaf is a function <span class="math inline">\(\mathcal{F}\colon\mathcal{T} \to \mathbf{Ab}\)</span> such that any subset inclusion <span class="math inline">\(U \subset V\)</span> induces a group homomorphism <span class="math inline">\(\mathcal{F}(V) \to \mathcal{F}(U)\)</span> which is coherent with taking further subsets, and if you have elements of <span class="math inline">\(\mathcal{F}(U),\mathcal{F}(V)\)</span> that agree on these “restriction maps” to the intersection we get a unique element of <span class="math inline">\(\mathcal{F}(U \cup V)\)</span>. Maps between sheaves are then a family of maps <span class="math inline">\(\mathcal{F}(U) \to \mathcal{G}(U)\)</span> that are group homs and agree with restriction. For such sheaves <span class="math inline">\(A,B,C,D,A',B',C',D'\)</span> and a commmutative diagram <span class="math display">\[
+\begin{tikzcd}
+A \arrow[d, "\alpha", two heads] \arrow[r, "a"] &amp; B \arrow[d, "\beta", hook] \arrow[r, "b"] &amp; C \arrow[d, "\gamma"] \arrow[r, "c"] &amp; D \arrow[d, "\delta", hook] \\
+A' \arrow[r, "a'"]                              &amp; B' \arrow[r, "b'"]                        &amp; C' \arrow[r, "c'"]                   &amp; D'                         
+\end{tikzcd}
+\]</span> Where <span class="math inline">\(\beta, \delta\)</span> are injective on each <span class="math inline">\(\mathcal{F}(U)\)</span>, <span class="math inline">\(\alpha\)</span> surjective on each <span class="math inline">\(\mathcal{F}_x =\lim_{x \in U}\mathcal{F}(U)\)</span> for <span class="math inline">\(x \in X\)</span> and the rows are exact, meaning, at every <span class="math inline">\(\mathcal{F}_x\)</span>, <span class="math inline">\(f(x)=0 \iff \exists y, x=g(y)\)</span> for any composable pair <span class="math inline">\(f,g\)</span> in the row, then <span class="math inline">\(\gamma\)</span> is injective.</p>
+<details>
+<summary>
+<strong>Proof.</strong>
+</summary>
+This one does require some theory, although I ask that for now you accept that this structure on the category of sheaves gives the correct notions of injective/surjective/exact
+</details>
+<p>And of course this one has the opposite as well, in order to prove such a thing it would be mighty convenient to have a general setup that makes rigourous the calculations done in the first proof. For this we introduce the notion of an abelian category and take two approaches, one requires some subtlelty in application to use the notion of generalised elements, and the other is wonderful in how lazy one can be when using it. Although proving this (what will be called) embedding theorem requires some real machinery to get to</p>
 
 
 
