@@ -9,7 +9,12 @@ imagify:
 
 ::: {.hidden}
 
-
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\eq}{\operatorname{eq}}
+\newcommand{\coeq}{\operatorname{coeq}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Mod}{\mathbf{Mod}}
 :::
 
 **Lemma (Four Lemma 1).**
@@ -25,6 +30,7 @@ Where $\beta, \delta$ are injective, $\alpha$ surjective and the rows are exact,
 <details>
 <summary>**Proof.**</summary>
 Suppose $\gamma(x)=0$ then $0=c'(\gamma(x))=\delta ( c(x))$ hense $c(x)=0$ so by exactness there is some $y$ so that $x=b(y)$. This means $0=\gamma ( b(y)) = b' (\beta(y))$ so by exactness there is some $z$ so that $a'(z)=\beta(y)$. As $\alpha$ is surjective there is some $w$ so that $\alpha(w)=z$, here we have $\beta (a(w))=a'(\alpha(w))=a'(z)=\beta(y)$ hense $a(w)=y$ so by exactness $0=b( a (w)) = b(y) = x$ hense $\gamma(x)=0 \implies x=0$ so $\gamma$ is injective
+&#9632;
 </details>
 
 
@@ -43,6 +49,7 @@ Where $\beta, \delta$ are surjective, $\alpha$ injective and the rows are exact,
 <details>
 <summary>**Proof.**</summary>
 Ok so I'm lying a little bit here you can prove this one the same way once you use Pontryagin duality to show $\mathbf{Ab}^{op} \cong \mathbf{CTop}_{Ab}$ and then the original proof works there
+&#9632;
 </details>
 
 **Lemma (Four Lemma 1).**
@@ -53,11 +60,116 @@ A \arrow[d, "\alpha", two heads] \arrow[r, "a"] & B \arrow[d, "\beta", hook] \ar
 A' \arrow[r, "a'"]                              & B' \arrow[r, "b'"]                        & C' \arrow[r, "c'"]                   & D'                         
 \end{tikzcd}
 $$
-Where $\beta, \delta$ are injective on each $\mathcal{F}(U)$, $\alpha$ surjective on each $\mathcal{F}_x =\lim_{x \in U}\mathcal{F}(U)$ for $x \in X$ and the rows are exact, meaning, at every $\mathcal{F}_x$, $f(x)=0 \iff \exists y, x=g(y)$ for any composable pair $f,g$ in the row, then $\gamma$ is injective.
+Where $\beta, \delta$ are injective on each $\mathcal{F}(U)$, $\alpha$ surjective on each $\mathcal{F}_x =\lim_{x \in U}\mathcal{F}(U)$ for $x \in X$ and the rows are exact, meaning, at every $\mathcal{F}_x$, $f(z)=0 \iff \exists y, z=g(y)$ for any composable pair $f,g$ in the row, then $\gamma$ is injective.
+
+<details>
+<summary>**Proof?**</summary>
+This one does require some theory, although I ask that for now you accept that this structure on the category of sheaves gives the correct notions of injective/surjective/exact
+&#9632;
+</details>
+
+And of course this one has the opposite as well, in order to prove such a thing it would be mighty convenient to have a general setup that makes rigourous the calculations done in the first proof. For this we introduce the notion of an abelian category and take two approaches, one requires some subtlelty in application to use the notion of generalised elements, and the other is wonderful in how lazy one can be when using it. Although proving this (what will be called the embedding theorem) requires some real machinery to get to
+
+One of the most important parts of this proof was the fact that $\ker f = 0$ if and only if $f$ is injective. To generalise this notion we first need zero
+
+**Definition.**
+A category is <i>pointed</i> if it has both a terminal and initial object and the map between them is an isomorphism, we denote such an object $0$
+
+**Remark.**
+We will at some point show that what we will call <i>Abelian Categories</i> are enriched over $\mathbf{Ab}$, that is have hom abelian groups instead of hom sets. In such a category it in fact suffices for there to be an object $0$ so that $\hom (0,0)=0$ as for any $f \in \hom (X,0)$ we have $f = \id_0 \circ f = (\id_0 + \id_0) \circ f = f + f$ hense $f=0$, similiarly $\hom(0,X)=0$ so $0$ is both initial and terminal
+
+**Definition.**
+In a pointed category $\mathbf{C}$ for any objects $x,y$ we can define the zero morphism $0 \colon x \to y$ as the unique map that factors as $x \to 0 \to y$. Then, for any morphism $f$, define the kernel and cokernel as $\ker(f)=\eq (f,0) \ \coker(f)=\coeq (f,0)$
+
+<details>
+<summary>Notational Confusion</summary>
+Some readers may at this point be getting a little bit stressed out with the overloading of the symbol $0$. This is reasonable to worry about but it will always be clear from context which $0$ is in use. If $0$ is an object of a category it is the zero object. This includes $\mathbf{Ab}$ where the zero object is the singleton group where, as we are in the additive world, it's more natural to write $\{*\}=0$ than $\{*\}=1$. If $0$ is a morphism it is one of two things, if the homsets are abelian groups then $0$ means the identity element of the group $\hom (x,y)$ for whichever $x,y$ are being talked about, alternatively if the category is pointed then it refers to the zero morphism $x \to 0 \to y$. We can see that when a category is both $\mathbf{Ab}$ enriched and pointed that these defintions must coincide as the map $0 + 0$ also factors through the object $0$ via
+$$
+\begin{tikzcd}
+x \arrow[r, "!+!"] & 0 \arrow[r, "?"] & y
+\end{tikzcd}
+$$
+Hense by uniqueness of such a map $0+0=0$ so $0$ must be the identity element of the group. This means there is no ambiguity once we know in what context $0$ is being written
+</details>
+
+In fact if we take abelian groups every injection or surjection arises as one of these by taking quotients, this motivates the following definition
+
+**Definition.**
+A category $\mathbf{A}$ is abelian if \
+1. $\mathbf{A}$ is pointed \
+2. Every pair of objects has a product and coproduct \
+3. Every morphism has a kernel and a cokernel \
+4. Every monomorphism is a kernel and every epimorphism is a cokernel \
+
+This is enough to get the properties we want. Generally this isn't the standard way to introduce this notion, one would normally assume that $\mathbf{A}$ is enriched over abelian groups but these notes are, in spirit, following Borceux who does it this way for annoying pedantry reasons.
+
+
+**Lemma.**
+An abelian category is complete and cocomplete
+<details>
+<summary>**Proof.**</summary>
+&#9632;
+</details>
+
+Now we can show the lovely injectivity property
+
+**Lemma.** 
+A morphism in an abelian category is monic if and only if it has zero kernel. 
+<details>
+<summary>**Proof.**</summary>
+Clearly if $f$ monic $\ker(f)=0$ as if $g$ equalises $f,0$ then $f \circ g = 0 \circ g = 0 = f \circ 0$ hense $g = 0$ which factors uniquely through $0$.
+
+The other direction is slightly fiddly. If we knew that abelian categories were additive this would be straightforward as $f \circ u = f \circ v \implies f \circ (u-v)= 0$ meaning $u-v$ factors through the kernel, but the kernel is zero so $u=v$. However with some trickery we can get around this
+
+Suppose $f \circ u = f \circ v$ then taking the coequaliser of these say $q=\coeq(u,v)$, this is an epimorphism hense equal to some $\coker(w)$ morally this $w$ is $u-v$ so as before we want to factor $w$ through the kernel. As $f$ coequalises $u,v$ we can factor as $f=m \circ q$ for some $m$ and hense $f \circ w = m \circ q \circ w = m \circ 0 = 0$ hense $w$ factors through the kernel as we would like, since $\ker(f)=0$ $w=0$ so $q$ is an isomorphism hense as $q \circ u = q \circ v$ by definition, we get $u=v$
+&#9632;
+</details>
+
+At this point it really would be nice if these abelian categories were additive, as we can see it would make the proofs a lot more intuitive, to prove this let us for a moment return to abelian groups
+
+We can recover the addition in abelian groups with some subtle external work, if we take the diagonal map $X \to X\times X, x \mapsto (x,x)$ the cokernel of this map will be $(x,y) \mapsto x-y$ as $x-y=0 \iff x=y$, this lets us recover some notion of subtraction. Note that there is a subtlelty here that $(x,y)\mapsto y-x$ is also a cokernel so we first need to fix a cokernel for every diagonal
+
+**Lemma.**
+For an object $X$ in an abelian category the cokernel of the diagonal map $A \to A \times A$ written as $q_{A} \colon A \times A \to Q_A$ has $Q_A \cong A$ via the map $r_A=q_A \circ (\id_A,0)\colon A \to Q_A$
+<details>
+<summary>**Proof.**</summary>
+&#9632;
+</details>
+
+This lets us define a group structure as follows
+
+**Definition.**
+Take two morphisms $f,g \colon B \to A$ in an abelian category, we can define the difference of these two morphisms $f-g$ as the composite
+$$
+\begin{tikzcd}
+B \arrow[r, "{(f,g)}"] & A \times A \arrow[r, "q_A"] & Q_A \arrow[r, "r_A^{-1}"] & A
+\end{tikzcd}
+$$
+Then addition is simply $f + g = f - (0-g)$
+
+**Lemma.**
+This determines an abelian group structure on hom sets for which composition is a group homomorphism
+<details>
+<summary>**Proof.**</summary>
+&#9632;
+</details>
+
+This means we can exploit one of the nicest things about $\mathbf{Ab}$ enriched categories
+
+**Lemma.**
+For two objects $A,B$ in an $\mathbf{Ab}$ enriched category, the following data are equivalent \
+1. $(P,\pi_A,\pi_B)$ realises the product of $A,B$ \
+2. $(P, \iota_A, \iota_B)$ realises the coproduct of $A,B$ \
+3. $(P, \pi_A, \pi_B, \iota_A, \iota_B)$ satisfy
+$$
+\pi_- \circ \iota_- = \id_- \quad \pi_A \circ \iota_B = 0 \quad \pi_B \circ \iota_A = 0 \quad \iota_A \circ \pi_A + \iota_B \circ \pi_B = \id_P
+$$
+
+We can additionally conclude that given such a set up $\iota_A = \ker \pi_B,\iota_B = \ker \pi_A,\pi_A = \coker \iota_B,\pi_B = \coker \iota_A$
 
 <details>
 <summary>**Proof.**</summary>
-This one does require some theory, although I ask that for now you accept that this structure on the category of sheaves gives the correct notions of injective/surjective/exact
+&#9632;
 </details>
 
-And of course this one has the opposite as well, in order to prove such a thing it would be mighty convenient to have a general setup that makes rigourous the calculations done in the first proof. For this we introduce the notion of an abelian category and take two approaches, one requires some subtlelty in application to use the notion of generalised elements, and the other is wonderful in how lazy one can be when using it. Although proving this (what will be called) embedding theorem requires some real machinery to get to
+To be clear this is incredibly powerful. It reduces checking a <i>universal property</i> which quantifies over <i>all</i> objects, to checking a set of $5$ equations which is much, much easier. 
