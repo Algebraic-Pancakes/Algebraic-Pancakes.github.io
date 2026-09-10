@@ -334,7 +334,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 7, 2026</p>
+      <p class="date-modified">September 10, 2026</p>
     </div>
   </div>
     
@@ -358,7 +358,7 @@ A' \arrow[r, "a'"]                              &amp; B' \arrow[r, "b'"]        
 <summary>
 <strong>Proof.</strong>
 </summary>
-Suppose <span class="math inline">\(\gamma(x)=0\)</span> then <span class="math inline">\(0=c'(\gamma(x))=\delta ( c(x))\)</span> hense <span class="math inline">\(c(x)=0\)</span> so by exactness there is some <span class="math inline">\(y\)</span> so that <span class="math inline">\(x=b(y)\)</span>. This means <span class="math inline">\(0=\gamma ( b(y)) = b' (\beta(y))\)</span> so by exactness there is some <span class="math inline">\(z\)</span> so that <span class="math inline">\(a'(z)=\beta(y)\)</span>. As <span class="math inline">\(\alpha\)</span> is surjective there is some <span class="math inline">\(w\)</span> so that <span class="math inline">\(\alpha(w)=z\)</span>, here we have <span class="math inline">\(\beta (a(w))=a'(\alpha(w))=a'(z)=\beta(y)\)</span> hense <span class="math inline">\(a(w)=y\)</span> so by exactness <span class="math inline">\(0=b( a (w)) = b(y) = x\)</span> hense <span class="math inline">\(\gamma(x)=0 \implies x=0\)</span> so <span class="math inline">\(\gamma\)</span> is injective
+Suppose <span class="math inline">\(\gamma(x)=0\)</span> then <span class="math inline">\(0=c'(\gamma(x))=\delta ( c(x))\)</span> hense <span class="math inline">\(c(x)=0\)</span> so by exactness there is some <span class="math inline">\(y\)</span> so that <span class="math inline">\(x=b(y)\)</span>. This means <span class="math inline">\(0=\gamma ( b(y)) = b' (\beta(y))\)</span> so by exactness there is some <span class="math inline">\(z\)</span> so that <span class="math inline">\(a'(z)=\beta(y)\)</span>. As <span class="math inline">\(\alpha\)</span> is surjective there is some <span class="math inline">\(w\)</span> so that <span class="math inline">\(\alpha(w)=z\)</span>, here we have <span class="math inline">\(\beta (a(w))=a'(\alpha(w))=a'(z)=\beta(y)\)</span> hense <span class="math inline">\(a(w)=y\)</span> so by exactness <span class="math inline">\(0=b( a (w)) = b(y) = x\)</span> hense <span class="math inline">\(\gamma(x)=0 \implies x=0\)</span> so <span class="math inline">\(\gamma\)</span> is injective ■
 </details>
 <p>Now as it stands this is a pretty specific proof to abelian groups, well it also generalises to modules over a ring, or more generally some type of sets with structure such that <span class="math inline">\(\ker f = 0\)</span> means <span class="math inline">\(f\)</span> injective but if we try hard we can find different theorems of the same flavour for whom this proof doesn’t seem to work but yet still hold true</p>
 <p><strong>Lemma (Four Lemma 2).</strong> For abelian groups <span class="math inline">\(A,B,C,D,A',B',C',D'\)</span> and a commmutative diagram <span class="math display">\[
@@ -371,21 +371,97 @@ A' \arrow[u, "\alpha"', hook] &amp; B' \arrow[u, "\beta"', two heads] \arrow[l, 
 <summary>
 <strong>Proof.</strong>
 </summary>
-Ok so I’m lying a little bit here you can prove this one the same way once you use Pontryagin duality to show <span class="math inline">\(\mathbf{Ab}^{op} \cong \mathbf{CTop}_{Ab}\)</span> and then the original proof works there
+Ok so I’m lying a little bit here you can prove this one the same way once you use Pontryagin duality to show <span class="math inline">\(\mathbf{Ab}^{op} \cong \mathbf{CTop}_{Ab}\)</span> and then the original proof works there ■
 </details>
 <p><strong>Lemma (Four Lemma 1).</strong> Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space, a sheaf is a function <span class="math inline">\(\mathcal{F}\colon\mathcal{T} \to \mathbf{Ab}\)</span> such that any subset inclusion <span class="math inline">\(U \subset V\)</span> induces a group homomorphism <span class="math inline">\(\mathcal{F}(V) \to \mathcal{F}(U)\)</span> which is coherent with taking further subsets, and if you have elements of <span class="math inline">\(\mathcal{F}(U),\mathcal{F}(V)\)</span> that agree on these “restriction maps” to the intersection we get a unique element of <span class="math inline">\(\mathcal{F}(U \cup V)\)</span>. Maps between sheaves are then a family of maps <span class="math inline">\(\mathcal{F}(U) \to \mathcal{G}(U)\)</span> that are group homs and agree with restriction. For such sheaves <span class="math inline">\(A,B,C,D,A',B',C',D'\)</span> and a commmutative diagram <span class="math display">\[
 \begin{tikzcd}
 A \arrow[d, "\alpha", two heads] \arrow[r, "a"] &amp; B \arrow[d, "\beta", hook] \arrow[r, "b"] &amp; C \arrow[d, "\gamma"] \arrow[r, "c"] &amp; D \arrow[d, "\delta", hook] \\
 A' \arrow[r, "a'"]                              &amp; B' \arrow[r, "b'"]                        &amp; C' \arrow[r, "c'"]                   &amp; D'                         
 \end{tikzcd}
-\]</span> Where <span class="math inline">\(\beta, \delta\)</span> are injective on each <span class="math inline">\(\mathcal{F}(U)\)</span>, <span class="math inline">\(\alpha\)</span> surjective on each <span class="math inline">\(\mathcal{F}_x =\lim_{x \in U}\mathcal{F}(U)\)</span> for <span class="math inline">\(x \in X\)</span> and the rows are exact, meaning, at every <span class="math inline">\(\mathcal{F}_x\)</span>, <span class="math inline">\(f(x)=0 \iff \exists y, x=g(y)\)</span> for any composable pair <span class="math inline">\(f,g\)</span> in the row, then <span class="math inline">\(\gamma\)</span> is injective.</p>
+\]</span> Where <span class="math inline">\(\beta, \delta\)</span> are injective on each <span class="math inline">\(\mathcal{F}(U)\)</span>, <span class="math inline">\(\alpha\)</span> surjective on each <span class="math inline">\(\mathcal{F}_x =\lim_{x \in U}\mathcal{F}(U)\)</span> for <span class="math inline">\(x \in X\)</span> and the rows are exact, meaning, at every <span class="math inline">\(\mathcal{F}_x\)</span>, <span class="math inline">\(f(z)=0 \iff \exists y, z=g(y)\)</span> for any composable pair <span class="math inline">\(f,g\)</span> in the row, then <span class="math inline">\(\gamma\)</span> is injective.</p>
+<details>
+<summary>
+<strong>Proof?</strong>
+</summary>
+This one does require some theory, although I ask that for now you accept that this structure on the category of sheaves gives the correct notions of injective/surjective/exact ■
+</details>
+<p>And of course this one has the opposite as well, in order to prove such a thing it would be mighty convenient to have a general setup that makes rigourous the calculations done in the first proof. For this we introduce the notion of an abelian category and take two approaches, one requires some subtlelty in application to use the notion of generalised elements, and the other is wonderful in how lazy one can be when using it. Although proving this (what will be called the embedding theorem) requires some real machinery to get to</p>
+<p>One of the most important parts of this proof was the fact that <span class="math inline">\(\ker f = 0\)</span> if and only if <span class="math inline">\(f\)</span> is injective. To generalise this notion we first need zero</p>
+<p><strong>Definition.</strong> A category is <i>pointed</i> if it has both a terminal and initial object and the map between them is an isomorphism, we denote such an object <span class="math inline">\(0\)</span></p>
+<p><strong>Remark.</strong> We will at some point show that what we will call <i>Abelian Categories</i> are enriched over <span class="math inline">\(\mathbf{Ab}\)</span>, that is have hom abelian groups instead of hom sets. In such a category it in fact suffices for there to be an object <span class="math inline">\(0\)</span> so that <span class="math inline">\(\hom (0,0)=0\)</span> as for any <span class="math inline">\(f \in \hom (X,0)\)</span> we have <span class="math inline">\(f = \mathrm{id}_0 \circ f = (\mathrm{id}_0 + \mathrm{id}_0) \circ f = f + f\)</span> hense <span class="math inline">\(f=0\)</span>, similiarly <span class="math inline">\(\hom(0,X)=0\)</span> so <span class="math inline">\(0\)</span> is both initial and terminal</p>
+<p><strong>Definition.</strong> In a pointed category <span class="math inline">\(\mathbf{C}\)</span> for any objects <span class="math inline">\(x,y\)</span> we can define the zero morphism <span class="math inline">\(0 \colon x \to y\)</span> as the unique map that factors as <span class="math inline">\(x \to 0 \to y\)</span>. Then, for any morphism <span class="math inline">\(f\)</span>, define the kernel and cokernel as <span class="math inline">\(\ker(f)=\operatorname{eq}(f,0) \ \operatorname{coker}(f)=\operatorname{coeq}(f,0)\)</span></p>
+<details>
+<summary>
+Notational Confusion
+</summary>
+Some readers may at this point be getting a little bit stressed out with the overloading of the symbol <span class="math inline">\(0\)</span>. This is reasonable to worry about but it will always be clear from context which <span class="math inline">\(0\)</span> is in use. If <span class="math inline">\(0\)</span> is an object of a category it is the zero object. This includes <span class="math inline">\(\mathbf{Ab}\)</span> where the zero object is the singleton group where, as we are in the additive world, it’s more natural to write <span class="math inline">\(\{*\}=0\)</span> than <span class="math inline">\(\{*\}=1\)</span>. If <span class="math inline">\(0\)</span> is a morphism it is one of two things, if the homsets are abelian groups then <span class="math inline">\(0\)</span> means the identity element of the group <span class="math inline">\(\hom (x,y)\)</span> for whichever <span class="math inline">\(x,y\)</span> are being talked about, alternatively if the category is pointed then it refers to the zero morphism <span class="math inline">\(x \to 0 \to y\)</span>. We can see that when a category is both <span class="math inline">\(\mathbf{Ab}\)</span> enriched and pointed that these defintions must coincide as the map <span class="math inline">\(0 + 0\)</span> also factors through the object <span class="math inline">\(0\)</span> via <span class="math display">\[
+\begin{tikzcd}
+x \arrow[r, "!+!"] &amp; 0 \arrow[r, "?"] &amp; y
+\end{tikzcd}
+\]</span> Hense by uniqueness of such a map <span class="math inline">\(0+0=0\)</span> so <span class="math inline">\(0\)</span> must be the identity element of the group. This means there is no ambiguity once we know in what context <span class="math inline">\(0\)</span> is being written
+</details>
+<p>In fact if we take abelian groups every injection or surjection arises as one of these by taking quotients, this motivates the following definition</p>
+<p><strong>Definition.</strong> A category <span class="math inline">\(\mathbf{A}\)</span> is abelian if<br>
+1. <span class="math inline">\(\mathbf{A}\)</span> is pointed<br>
+2. Every pair of objects has a product and coproduct<br>
+3. Every morphism has a kernel and a cokernel<br>
+4. Every monomorphism is a kernel and every epimorphism is a cokernel<br>
+</p>
+<p>This is enough to get the properties we want. Generally this isn’t the standard way to introduce this notion, one would normally assume that <span class="math inline">\(\mathbf{A}\)</span> is enriched over abelian groups but these notes are, in spirit, following Borceux who does it this way for annoying pedantry reasons.</p>
+<strong>Lemma.</strong> An abelian category is complete and cocomplete
 <details>
 <summary>
 <strong>Proof.</strong>
 </summary>
-This one does require some theory, although I ask that for now you accept that this structure on the category of sheaves gives the correct notions of injective/surjective/exact
+■
 </details>
-<p>And of course this one has the opposite as well, in order to prove such a thing it would be mighty convenient to have a general setup that makes rigourous the calculations done in the first proof. For this we introduce the notion of an abelian category and take two approaches, one requires some subtlelty in application to use the notion of generalised elements, and the other is wonderful in how lazy one can be when using it. Although proving this (what will be called) embedding theorem requires some real machinery to get to</p>
+<p>Now we can show the lovely injectivity property</p>
+<strong>Lemma.</strong> A morphism in an abelian category is monic if and only if it has zero kernel.
+<details>
+<summary>
+<strong>Proof.</strong>
+</summary>
+<p>Clearly if <span class="math inline">\(f\)</span> monic <span class="math inline">\(\ker(f)=0\)</span> as if <span class="math inline">\(g\)</span> equalises <span class="math inline">\(f,0\)</span> then <span class="math inline">\(f \circ g = 0 \circ g = 0 = f \circ 0\)</span> hense <span class="math inline">\(g = 0\)</span> which factors uniquely through <span class="math inline">\(0\)</span>.</p>
+<p>The other direction is slightly fiddly. If we knew that abelian categories were additive this would be straightforward as <span class="math inline">\(f \circ u = f \circ v \implies f \circ (u-v)= 0\)</span> meaning <span class="math inline">\(u-v\)</span> factors through the kernel, but the kernel is zero so <span class="math inline">\(u=v\)</span>. However with some trickery we can get around this</p>
+Suppose <span class="math inline">\(f \circ u = f \circ v\)</span> then taking the coequaliser of these say <span class="math inline">\(q=\operatorname{coeq}(u,v)\)</span>, this is an epimorphism hense equal to some <span class="math inline">\(\operatorname{coker}(w)\)</span> morally this <span class="math inline">\(w\)</span> is <span class="math inline">\(u-v\)</span> so as before we want to factor <span class="math inline">\(w\)</span> through the kernel. As <span class="math inline">\(f\)</span> coequalises <span class="math inline">\(u,v\)</span> we can factor as <span class="math inline">\(f=m \circ q\)</span> for some <span class="math inline">\(m\)</span> and hense <span class="math inline">\(f \circ w = m \circ q \circ w = m \circ 0 = 0\)</span> hense <span class="math inline">\(w\)</span> factors through the kernel as we would like, since <span class="math inline">\(\ker(f)=0\)</span> <span class="math inline">\(w=0\)</span> so <span class="math inline">\(q\)</span> is an isomorphism hense as <span class="math inline">\(q \circ u = q \circ v\)</span> by definition, we get <span class="math inline">\(u=v\)</span> ■
+</details>
+<p>At this point it really would be nice if these abelian categories were additive, as we can see it would make the proofs a lot more intuitive, to prove this let us for a moment return to abelian groups</p>
+<p>We can recover the addition in abelian groups with some subtle external work, if we take the diagonal map <span class="math inline">\(X \to X\times X, x \mapsto (x,x)\)</span> the cokernel of this map will be <span class="math inline">\((x,y) \mapsto x-y\)</span> as <span class="math inline">\(x-y=0 \iff x=y\)</span>, this lets us recover some notion of subtraction. Note that there is a subtlelty here that <span class="math inline">\((x,y)\mapsto y-x\)</span> is also a cokernel so we first need to fix a cokernel for every diagonal</p>
+<strong>Lemma.</strong> For an object <span class="math inline">\(X\)</span> in an abelian category the cokernel of the diagonal map <span class="math inline">\(A \to A \times A\)</span> written as <span class="math inline">\(q_{A} \colon A \times A \to Q_A\)</span> has <span class="math inline">\(Q_A \cong A\)</span> via the map <span class="math inline">\(r_A=q_A \circ (\mathrm{id}_A,0)\colon A \to Q_A\)</span>
+<details>
+<summary>
+<strong>Proof.</strong>
+</summary>
+■
+</details>
+<p>This lets us define a group structure as follows</p>
+<p><strong>Definition.</strong> Take two morphisms <span class="math inline">\(f,g \colon B \to A\)</span> in an abelian category, we can define the difference of these two morphisms <span class="math inline">\(f-g\)</span> as the composite <span class="math display">\[
+\begin{tikzcd}
+B \arrow[r, "{(f,g)}"] &amp; A \times A \arrow[r, "q_A"] &amp; Q_A \arrow[r, "r_A^{-1}"] &amp; A
+\end{tikzcd}
+\]</span> Then addition is simply <span class="math inline">\(f + g = f - (0-g)\)</span></p>
+<strong>Lemma.</strong> This determines an abelian group structure on hom sets for which composition is a group homomorphism
+<details>
+<summary>
+<strong>Proof.</strong>
+</summary>
+■
+</details>
+<p>This means we can exploit one of the nicest things about <span class="math inline">\(\mathbf{Ab}\)</span> enriched categories</p>
+<p><strong>Lemma.</strong> For two objects <span class="math inline">\(A,B\)</span> in an <span class="math inline">\(\mathbf{Ab}\)</span> enriched category, the following data are equivalent<br>
+1. <span class="math inline">\((P,\pi_A,\pi_B)\)</span> realises the product of <span class="math inline">\(A,B\)</span><br>
+2. <span class="math inline">\((P, \iota_A, \iota_B)\)</span> realises the coproduct of <span class="math inline">\(A,B\)</span><br>
+3. <span class="math inline">\((P, \pi_A, \pi_B, \iota_A, \iota_B)\)</span> satisfy <span class="math display">\[
+\pi_- \circ \iota_- = \mathrm{id}_- \quad \pi_A \circ \iota_B = 0 \quad \pi_B \circ \iota_A = 0 \quad \iota_A \circ \pi_A + \iota_B \circ \pi_B = \mathrm{id}_P
+\]</span></p>
+<p>We can additionally conclude that given such a set up <span class="math inline">\(\iota_A = \ker \pi_B,\iota_B = \ker \pi_A,\pi_A = \operatorname{coker}\iota_B,\pi_B = \operatorname{coker}\iota_A\)</span></p>
+<details>
+<summary>
+<strong>Proof.</strong>
+</summary>
+■
+</details>
+<p>To be clear this is incredibly powerful. It reduces checking a <i>universal property</i> which quantifies over <i>all</i> objects, to checking a set of <span class="math inline">\(5\)</span> equations which is much, much easier.</p>
 
 
 
