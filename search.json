@@ -7,20 +7,6 @@
     "text": "Notes for some reading groups on categorical algebra, higher algebra, and higher category theory."
   },
   {
-    "objectID": "notes/index.html",
-    "href": "notes/index.html",
-    "title": "Notes",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n \n\n\nAbelian Categories\n\n\n \n\n\n\n\n\n\n \n\n\nNotes\n\n\n \n\n\n\n\n\n\n \n\n\nOperads\n\n\n \n\n\n\n\n\n\n \n\n\nUniversal algebra\n\n\n \n\n\n\n\n\n\nNov 9, 2025\n\n\nSandbox\n\n\nVikraman Choudhury\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "notes/sandbox.html",
-    "href": "notes/sandbox.html",
-    "title": "Sandbox",
-    "section": "",
-    "text": "Introduction\nThis is a sandbox document to test typesetting and layout. This website and notes are built using Quarto1.\n1 Quarto has a website and a Github repository.\n\nMath\n\n\\[\n\\newcommand{\\blank}{{-}}\n\\newcommand{\\ladj}{\\dashv}\n\\newcommand{\\dual}{^{\\perp}}\n\\newcommand{\\parr}{\n  \\require{html}\n  \\mathop{\\style{display: inline-block; transform: rotate(180deg)}{\\&}}\n}\n\\]\n\nThis is a math character \\(\\alpha\\), and this is some inline math \\((\\blank) \\otimes A \\ladj A\\dual \\parr (\\blank)\\).\nThis is a prooftree in display math mode2. \\[\n\\require{bussproofs}\n\\begin{prooftree}\n  \\AxiomC{ $\\Gamma, A \\vdash B$ }\n  \\RightLabel{ $\\to$I }\n  \\UnaryInfC{ $\\Gamma \\vdash A \\to B$ }\n  \\AxiomC{ $\\Gamma \\vdash A$ }\n  \\RightLabel{ $\\to$E }\n  \\BinaryInfC{ $\\Gamma \\vdash B$ }\n\\end{prooftree}\n\\]\n2 This is another prooftree but in the margin. \\[\n\\begin{prooftree}\n  \\AxiomC{ $P$ }\n  \\AxiomC{ $P \\to Q$ }\n  \\BinaryInfC { $Q$ }\n\\end{prooftree}\n\\]\n\n\n\n\nDiagrams\nThis renders diagrams in markdown Figure 1.\n\n\n\n\nThis is some imagified LaTeX math.\n\nA TikZ picture Figure 1 (a).\n\n\n\n\n\n\n(a)\n\n\n\nA commutative diagram Figure 1 (b).\n\n\n\n\n\n\n(b)\n\n\n\n\n\n\nFigure 1\n\n\n\nThis is a quiver iframe."
-  },
-  {
     "objectID": "notes/abelian-categories.html",
     "href": "notes/abelian-categories.html",
     "title": "Abelian Categories",
@@ -33,5 +19,19 @@
     "title": "Universal algebra",
     "section": "",
     "text": "Lawvere theories and their models\nDefinition. A Lawvere theory is a small category \\(\\mathcal T\\) with finite coproducts and a specified object \\(T \\in \\mathcal T\\), such that the objects of \\(\\mathcal T\\) precisely form the set \\(\\{0,\\, T,\\, T + T,\\, T + T + T,\\, \\dots, \\sum_{i &lt; n} T, \\dots\\}\\). For a category \\(\\mathcal{C}\\) with finite products, a \\(\\mathcal{C}\\)-model of a Lawvere theory \\(\\mathcal T\\) is a functor \\(M \\colon \\mathcal T^\\mathrm{op}\\to \\mathcal{C}\\) which preserves finite products. We denote by \\(\\mathbf{Mod}_{\\mathcal T}(\\mathcal{C})\\) the full subcategory of the functor category \\([\\mathcal T, \\mathcal{C}]\\) consisting of all the \\(\\mathcal{C}\\)-models of \\(\\mathcal T\\). We may drop the mention of \\(\\mathcal{C}\\) when it is clear from context; we will often take \\(\\mathcal{C}= \\mathbf{Set}\\).\nExample. For each natural number \\(n \\in \\mathbb N\\), let \\([n] \\in \\mathbf{Set}\\) denote the a set of cardinality \\(n\\). Consider the free–forgetful adjunction \\(\\mathbf{Set} \\substack{\\xrightarrow{F} \\\\ \\perp \\\\ \\xleftarrow[U]{}} \\mathbf{Grp}\\), and let \\(\\mathcal T_{\\mathrm{Grp}}\\) denote the full subcategory of \\(\\mathbf{Grp}\\) consisting of each \\(F[n]\\) for all \\(n \\in \\mathbb N\\). Then we have an equivalence of categories \\(\\mathbf{Mod}_{\\mathcal T_{\\mathrm{Grp}}}(\\mathbf{Set}) \\simeq \\mathbf{Grp}\\).\n\n\nDetails.\n\nFirst, we observe that \\(\\mathcal T_{\\mathrm{Grp}}\\) is indeed a Lawvere theory. For each \\(n \\in \\mathbb N\\), we have \\([n] \\cong \\sum_{i &lt; n} [1]\\) in \\(\\mathbf{Set}\\). So \\(F[n] \\cong \\sum_{i &lt; n} F[1]\\) in \\(\\mathbf{Grp}\\), since \\(F\\) preserves coproducts. Thus we get \\(F[n] = \\sum_{i &lt; n} F[1]\\) in \\(\\mathcal T_{\\mathrm{Grp}}\\).\nNext, given a \\(\\mathbf{Set}\\)-model \\(M \\colon \\mathcal T_\\mathrm{Grp}^\\mathrm{op}\\to \\mathbf{Set}\\), let \\(HM\\) be the group with:\n1. underlying set \\(MF[1]\\);\n2. group multiplication \\(M\\alpha \\colon (MF[1]) \\times (MF[1]) \\to MF[1]\\), where \\(\\alpha \\colon F[1] \\to F[1] + F[1] = F[2]\\) is the map in \\(\\mathcal T_\\mathrm{Grp}\\) sending the generator of \\(F[1]\\) to the multiplication of the two generators in \\(F[2]\\);\n3. identity element \\((Me)(*) \\in MF[1]\\), where \\(*\\) is the unique element in \\((MF[1])^0\\), and \\(e \\colon F[1] \\to F[0]\\) is the unique map in \\(\\mathcal T_\\mathrm{Grp}\\) from \\(F[1]\\) to \\(F[0]\\).\n\n\n\nCheck that \\(HM\\) is a group.\n\n\nWe extend \\(H\\) to a functor \\(H \\colon \\mathbf{Mod}_{\\mathcal T_{\\mathrm{Grp}}}(\\mathbf{Set}) \\to \\mathbf{Grp}\\) as follows: given another \\(M' \\in \\mathbf{Mod}_{\\mathcal T_\\mathrm{Grp}}(\\mathbf{Set})\\) and a morphism \\(\\mu \\colon M \\to M'\\) in \\(\\mathbf{Mod}_{\\mathcal T_\\mathrm{Grp}}(\\mathbf{Set})\\), let \\(H\\mu\\) be the function \\(\\mu_{F[1]} \\colon MF[1] \\to M'F[1]\\).\n\n\nCheck that \\(H\\mu\\) is a group homomorphism.\n\nThe commutativity of the diagram\n\n\n\n\n\n\n\n\n\n\n(a)\n\n\n\n\n\n\nFigure 1\n\n\n\nin \\(\\mathbf{Set}\\) tells us that \\(\\mu_{F[1]}\\) is a group homomorphism from \\(HM\\) to \\(HM'\\).\n\n[Other direction]"
+  },
+  {
+    "objectID": "notes/sandbox.html",
+    "href": "notes/sandbox.html",
+    "title": "Sandbox",
+    "section": "",
+    "text": "Introduction\nThis is a sandbox document to test typesetting and layout. This website and notes are built using Quarto1.\n1 Quarto has a website and a Github repository.\n\nMath\n\n\\[\n\\newcommand{\\blank}{{-}}\n\\newcommand{\\ladj}{\\dashv}\n\\newcommand{\\dual}{^{\\perp}}\n\\newcommand{\\parr}{\n  \\require{html}\n  \\mathop{\\style{display: inline-block; transform: rotate(180deg)}{\\&}}\n}\n\\]\n\nThis is a math character \\(\\alpha\\), and this is some inline math \\((\\blank) \\otimes A \\ladj A\\dual \\parr (\\blank)\\).\nThis is a prooftree in display math mode2. \\[\n\\require{bussproofs}\n\\begin{prooftree}\n  \\AxiomC{ $\\Gamma, A \\vdash B$ }\n  \\RightLabel{ $\\to$I }\n  \\UnaryInfC{ $\\Gamma \\vdash A \\to B$ }\n  \\AxiomC{ $\\Gamma \\vdash A$ }\n  \\RightLabel{ $\\to$E }\n  \\BinaryInfC{ $\\Gamma \\vdash B$ }\n\\end{prooftree}\n\\]\n2 This is another prooftree but in the margin. \\[\n\\begin{prooftree}\n  \\AxiomC{ $P$ }\n  \\AxiomC{ $P \\to Q$ }\n  \\BinaryInfC { $Q$ }\n\\end{prooftree}\n\\]\n\n\n\n\nDiagrams\nThis renders diagrams in markdown Figure 1.\n\n\n\n\nThis is some imagified LaTeX math.\n\nA TikZ picture Figure 1 (a).\n\n\n\n\n\n\n(a)\n\n\n\nA commutative diagram Figure 1 (b).\n\n\n\n\n\n\n(b)\n\n\n\n\n\n\nFigure 1\n\n\n\nThis is a quiver iframe."
+  },
+  {
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "Notes",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n \n\n\nAbelian Categories\n\n\n \n\n\n\n\n\n\n \n\n\nNotes\n\n\n \n\n\n\n\n\n\n \n\n\nOperads\n\n\n \n\n\n\n\n\n\n \n\n\nUniversal algebra\n\n\n \n\n\n\n\n\n\nNov 9, 2025\n\n\nSandbox\n\n\nVikraman Choudhury\n\n\n\n\n\n\nNo matching items"
   }
 ]
